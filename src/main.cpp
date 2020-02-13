@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "flagpole.h"
 
 class Card
 {
@@ -15,8 +16,8 @@ class Deck
 {
 public:
   std::string print_decklist();
-  bool add_card();
-  bool remove_card();
+  bool add_card(Card);
+  bool remove_card(Card);
 private:
   std::vector<std::reference_wrapper <Card>> list_of_cards;
 };
@@ -31,22 +32,15 @@ bool Card::set_name(std::string newname)
     name = newname;
     return true;
 }
-  
+
+
+
+
 
 
 int main(int argc, char * argv[])
 {
-  std::cout << "Hello World!\nArgC: " << argc << " ArgV:";
-  for(int i=0;i<argc;++i )
-    {
-      if(i!=0)
-	{
-	  std::cout << ", ";
-	}
-      std::cout << "\"" << argv[i] << "\"";
-    }
-  std::cout << ".\n";
-
+  Flagpole flags(argc, argv);
   Card test;
   std::cout << test.get_name() << "\n";
   test.set_name("Hello World!");
